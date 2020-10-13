@@ -11,35 +11,13 @@ The script of client deploy based on https://github.com/hwdsl2/setup-ipsec-vpn
 
 
 
+## 配置 ipsec.conf
 
+/etc/ipsec.conf
 
-## 配置 /etc/ipsec.conf
-
-将`right`参数替换为服务器公网IP地址
+将`right`参数中的`x.x.x.x`替换为服务器公网IP地址
 
 ```
-# ipsec.conf - strongSwan IPsec configuration file
-
-# basic configuration
-
-config setup
-  # strictcrlpolicy=yes
-  # uniqueids = no
-
-# Add connections here.
-
-# Sample VPN connections
-
-conn %default
-  ikelifetime=60m
-  keylife=20m
-  rekeymargin=3m
-  keyingtries=1
-  keyexchange=ikev1
-  authby=secret
-  ike=aes128-sha1-modp2048!
-  esp=aes128-sha1-modp2048!
-
 conn myvpn
   keyexchange=ikev1
   left=%defaultroute
@@ -58,13 +36,17 @@ conn myvpn
 
 /etc/ipsec.secrets
 
+将`xxxxxx`替换为连接密码
+
 ```
 : PSK "xxxxxxx"
 ```
 
 
 
-## 配置 /etc/xl2tpd/xl2tpd.conf
+## 配置 xl2tpd.conf
+
+/etc/xl2tpd/xl2tpd.conf
 
 将`lns`替换为服务器公网IP地址
 
@@ -79,7 +61,9 @@ length bit = yes
 
 
 
-## 配置 /etc/ppp/options.l2tpd.client
+## 配置 options.l2tpd.client
+
+/etc/ppp/options.l2tpd.client
 
 将`user`和`password`替换为用户名和密码，`user`默认值为`vpnuser`。
 
@@ -107,7 +91,7 @@ debug
 
 ## 一键配置client
 
-运行`deploy_beta.sh`将上面修改好的配置文件生效。
+运行`deploy_beta.sh`，使上面修改好的配置文件生效。
 
 
 
@@ -115,35 +99,23 @@ debug
 
 ## 快速连接和断开vpn
 
-**start.sh**
+**连接**
 
-```
-#!/bin/bash
-  
-mkdir -p /var/run/xl2tpd
-touch /var/run/xl2tpd/l2tp-control
+运行`start.sh`以连接到服务器。
 
-service strongswan restart
-service xl2tpd restart
-
-sleep 0.5
-ipsec up myvpn
-
-sleep 1.5
-echo "c myvpn" > /var/run/xl2tpd/l2tp-control
+```bash
+# ./start.sh
 ```
 
 
 
-**stop.sh**
+断开**
 
+运行`stop.sh`以断开与服务器的连接。
+
+```bash
+# ./stop.sh	
 ```
-#!/bin/bash
-echo "d myvpn" > /var/run/xl2tpd/l2tp-control
-ipsec down myvpn
-```
-
-
 
 
 
