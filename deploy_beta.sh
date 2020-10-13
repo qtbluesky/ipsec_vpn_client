@@ -31,10 +31,10 @@ function backUpAndSetup() {
         mv /etc/ipsec.secrets /etc/ipsec.secrets.bak
         mv /etc/xl2tpd/xl2tpd.conf /etc/xl2tpd/xl2tpd.conf.bak
 	
-	cp ./ipsec.conf /etc/ipsec.conf
-	cp ./ipsec.secrets /etc/ipsec.secrets
-	cp ./xl2tpd.conf /etc/xl2tpd/xl2tpd.conf
-        cp ./options.l2tpd.client /etc/ppp/options.l2tpd.client
+	cp ./config/ipsec.conf /etc/ipsec.conf
+	cp ./config/ipsec.secrets /etc/ipsec.secrets
+	cp ./config/xl2tpd.conf /etc/xl2tpd/xl2tpd.conf
+        cp ./config/options.l2tpd.client /etc/ppp/options.l2tpd.client
 }
 
 checkOS
