@@ -1,8 +1,5 @@
-# ipsec_vpn_client
-The script of client deploy based on https://github.com/hwdsl2/setup-ipsec-vpn
-
 # L2TP+IPsec 客户端配置
-
+The script of client deploy based on https://github.com/hwdsl2/setup-ipsec-vpn
 
 
 # VPN方案 - L2TP+IPsec
