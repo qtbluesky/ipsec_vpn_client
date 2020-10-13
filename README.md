@@ -68,23 +68,8 @@ length bit = yes
 将`user`和`password`替换为用户名和密码，`user`默认值为`vpnuser`。
 
 ```
-ipcp-accept-local
-ipcp-accept-remote
-refuse-eap
-require-chap
-noccp
-noauth
-mtu 1280
-mru 1280
-noipdefault
-defaultroute
-usepeerdns
-connect-delay 5000
-name root
-remotename myvpn
 user "xxxx"
 password "xxxxx"
-debug
 ```
 
 
@@ -109,7 +94,7 @@ debug
 
 
 
-断开**
+**断开**
 
 运行`stop.sh`以断开与服务器的连接。
 
