@@ -18,16 +18,7 @@ The script of client deploy based on https://github.com/hwdsl2/setup-ipsec-vpn
 将`right`参数中的`x.x.x.x`替换为服务器公网IP地址
 
 ```
-conn myvpn
-  keyexchange=ikev1
-  left=%defaultroute
-  auto=add
-  authby=secret
-  type=transport
-  leftprotoport=17/1701
-  rightprotoport=17/1701
-  right=x.x.x.x
-#  right=$VPN_SERVER_IP
+right=x.x.x.x
 ```
 
 
@@ -51,12 +42,7 @@ conn myvpn
 将`lns`替换为服务器公网IP地址
 
 ```
-[lac myvpn]
 lns = x.x.x.x
-;lns = $VPN_SERVER_IP
-ppp debug = yes
-pppoptfile = /etc/ppp/options.l2tpd.client
-length bit = yes
 ```
 
 
